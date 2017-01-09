@@ -1,0 +1,25 @@
+{
+  "name": "nuttapolnon.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.18.6",
+    "gulp": "^3.9.1",
+    "gulp-ruby-sass": "^2.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NutNon/nuttapolnon.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NutNon/nuttapolnon.com/issues"
+  },
+  "homepage": "https://github.com/NutNon/nuttapolnon.com#readme"
+}
