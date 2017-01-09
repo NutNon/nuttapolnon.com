@@ -3,14 +3,14 @@
 // โหลด package "gulp" มาใช้ (บรรทัดนี้ต้องใส่เสมอ)
 var gulp = require('gulp')
 
-// โหลด package "gulp-ruby-sass" มาใช้ (บรรทัดนี้ต้องใส่เวลาติดตั้ง plugin เสริม)
-var sass = require('gulp-ruby-sass')
+// Require gulp sass.
+var sass = require('gulp-sass');
 
 // โหลด package "browser-sync" มาใช้ (บรรทัดนี้ต้องใส่เวลาติดตั้ง plugin เสริม)
 var browserSync = require('browser-sync')
 
 // SCSS dev path
-const scssDevPath	=	"app/scss/**/*.scss"
+const scssDevPath = "app/scss/**/*.scss"
 
 // เพิ่ม task "browser-sync" ให้ทำพร้อม default task
 gulp.task('default', ['sass'], function () {
@@ -23,25 +23,16 @@ gulp.task('default', ['sass'], function () {
 	gulp.watch(scssDevPath, ['sass'])
 })
 
+// Create a task to compile SASS.
 gulp.task('sass', function () {
-	sass([scssDevPath])
-		.on('error', sass.logError)
+	return gulp.src(scssDevPath)
+		.pipe(sass({
+			compass: true, // Use compass.
+			style: 'compressed' // Compressed CSS output.
+		})
+		.on('error', sass.logError))
 		.pipe(gulp.dest('public/css'))
 })
-
-// // สร้าง task ชื่อว่า "sass" ขึ้นมา พร้อมกับระบุงานที่จะให้ task นี้ทำ
-// gulp.task('sass', function () {
-// 	// ให้คอมไพล์ .scss ทุกไฟล์ที่อยู่ในโฟลเดอร์ scss
-// 	return gulp.src(['scss/**/*.scss'])
-// 		.pipe(sass({
-// 			compass: true, // ใช้ Compass
-// 			style: 'compressed', // เลือก output แบบ compressed
-// 		}))
-// 		.on('error', function (err) {
-// 			console.log(err.message)
-// 		})
-// 		.pipe(gulp.dest('public/css')) // เก็บไฟล์ css ไว้ที่โฟลเดอร์ css
-// })
 
 // สร้าง task ชื่อว่า "browser-sync" ขึ้นมา พร้อมกับระบุงานที่จะให้ task นี้ทำ
 gulp.task('browser-sync', function () {
