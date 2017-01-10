@@ -4,7 +4,7 @@
 var gulp = require('gulp')
 
 // Require gulp sass.
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')
 
 // โหลด package "browser-sync" มาใช้ (บรรทัดนี้ต้องใส่เวลาติดตั้ง plugin เสริม)
 var browserSync = require('browser-sync')
@@ -27,8 +27,7 @@ gulp.task('default', ['sass'], function () {
 gulp.task('sass', function () {
 	return gulp.src(scssDevPath)
 		.pipe(sass({
-			compass: true, // Use compass.
-			style: 'compressed' // Compressed CSS output.
+			outputStyle: 'compressed' // Output compressed CSS.
 		})
 		.on('error', sass.logError))
 		.pipe(gulp.dest('public/css'))
