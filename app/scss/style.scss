@@ -1,3 +1,11 @@
-.something{
+@import 'variables';
+
+.someOne{
 	margin: 20px;
+	color: $primary-color;
+}
+
+.someTwo{
+	margin: 20px;
+	color: $accent-color;
 }
