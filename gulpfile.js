@@ -1,19 +1,16 @@
-// Code from http://www.siamhtml.com/introduction-to-gulp-js/
-
-// โหลด package "gulp" มาใช้ (บรรทัดนี้ต้องใส่เสมอ)
+// Guided by http://www.siamhtml.com/introduction-to-gulp-js/
 var gulp = require('gulp')
-
-// โหลด package "gulp-ruby-sass" มาใช้ (บรรทัดนี้ต้องใส่เวลาติดตั้ง plugin เสริม)
-var sass = require('gulp-ruby-sass')
-
-// โหลด package "browser-sync" มาใช้ (บรรทัดนี้ต้องใส่เวลาติดตั้ง plugin เสริม)
+var sass = require('gulp-sass')
 var browserSync = require('browser-sync')
 
 // SCSS dev path
-const scssDevPath	=	"app/scss/**/*.scss"
+const scssDevPath = "./app/scss/**/*.scss"
 
-// เพิ่ม task "browser-sync" ให้ทำพร้อม default task
-gulp.task('default', ['sass'], function () {
+// HTML client dev path
+const htmlClientDevPath	=	"./app/html/**/*.html"
+
+// Default gulp task when hit "gulp" in cli.
+gulp.task('default', ['sass', 'html-to-public'], function () {
 
 	// // เมื่อไฟล์ html หรือ css มีการเปลี่ยนแปลง ก็ให้รีเฟรช web browser
 	// gulp.watch(['**/*.html'], browserSync.reload)
@@ -21,33 +18,34 @@ gulp.task('default', ['sass'], function () {
 
 	// เมื่อไฟล์ scss มีการเปลี่ยนแปลง ก็ให้ทำ task "sass" 
 	gulp.watch(scssDevPath, ['sass'])
+
+	// Run task "html-to-public" when HTML files changed.
+	gulp.watch(htmlClientDevPath, ['html-to-public'])
 })
 
+// Create a task to compile SASS.
 gulp.task('sass', function () {
-	sass([scssDevPath])
-		.on('error', sass.logError)
-		.pipe(gulp.dest('public/css'))
+	return gulp.src(scssDevPath)
+		.pipe(sass({
+			outputStyle: 'compressed' // Output compressed CSS.
+		})
+		.on('error', sass.logError))
+		.pipe(gulp.dest('./public/css'))
 })
 
-// // สร้าง task ชื่อว่า "sass" ขึ้นมา พร้อมกับระบุงานที่จะให้ task นี้ทำ
-// gulp.task('sass', function () {
-// 	// ให้คอมไพล์ .scss ทุกไฟล์ที่อยู่ในโฟลเดอร์ scss
-// 	return gulp.src(['scss/**/*.scss'])
-// 		.pipe(sass({
-// 			compass: true, // ใช้ Compass
-// 			style: 'compressed', // เลือก output แบบ compressed
-// 		}))
-// 		.on('error', function (err) {
-// 			console.log(err.message)
-// 		})
-// 		.pipe(gulp.dest('public/css')) // เก็บไฟล์ css ไว้ที่โฟลเดอร์ css
-// })
-
-// สร้าง task ชื่อว่า "browser-sync" ขึ้นมา พร้อมกับระบุงานที่จะให้ task นี้ทำ
+// Create a task to sync browser.
 gulp.task('browser-sync', function () {
 	browserSync({
 		server: {
 			baseDir: "./"
 		}
 	})
+})
+
+// Create a task to copy html in src to build.
+gulp.task('html-to-public', function () {
+	return gulp.src(htmlClientDevPath, {
+		base: './app/html'
+	})
+	.pipe(gulp.dest('./public/html/'))
 })
