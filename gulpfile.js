@@ -3,6 +3,7 @@ var gulp = require('gulp')
 var sass = require('gulp-sass')
 var browserSync = require('browser-sync')
 var concat = require('gulp-concat')
+var ts = require('gulp-typescript');
 
 // SCSS dev path
 const scssDevPath = "./app/scss/**/*.scss"
@@ -10,8 +11,11 @@ const scssDevPath = "./app/scss/**/*.scss"
 // HTML client dev path
 const htmlClientDevPath	=	"./app/html/**/*.html"
 
+// Typescript dev path
+const tsDevPath	=	'./app/**/*.ts'
+
 // Default gulp task when hit "gulp" in cli.
-gulp.task('default', ['sass', 'html-to-public', 'concat-vendor-js', 'concat-vendor-css'], function () {
+gulp.task('default', ['sass', 'html-to-public', 'concat-vendor-js', 'concat-vendor-css', 'compile-ts'], function () {
 
 	// // เมื่อไฟล์ html หรือ css มีการเปลี่ยนแปลง ก็ให้รีเฟรช web browser
 	// gulp.watch(['**/*.html'], browserSync.reload)
@@ -22,6 +26,9 @@ gulp.task('default', ['sass', 'html-to-public', 'concat-vendor-js', 'concat-vend
 
 	// Run task "html-to-public" when HTML files changed.
 	gulp.watch(htmlClientDevPath, ['html-to-public'])
+
+	// Run task "compile-ts" when TS files changed.
+	gulp.watch(tsDevPath, ['compile-ts'])
 })
 
 // Create a task to compile SASS.
@@ -69,3 +76,13 @@ gulp.task('concat-vendor-css', function() {
 	.pipe(concat('vendors.css'))
 	.pipe(gulp.dest('./public/css/'))
 })
+
+// Create a task to compile typescript.
+gulp.task('compile-ts', function () {
+	return gulp.src(tsDevPath)
+		.pipe(ts({
+			noImplicitAny: true,
+			out: 'script.js'
+		}))
+		.pipe(gulp.dest('public/js'));
+});
