@@ -1,0 +1,71 @@
+@import 'variables';
+@import './bower_components/materialize/sass/materialize';
+
+// Google Fonts.
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400');
+
+body{
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+header{
+	.navbar-fixed{
+		height: 0;
+	}
+	nav{
+		// Logo.
+		.brand-logo{
+			padding: 0 20px;
+		}
+
+		// Menu link.
+		a{
+			font-weight: 200;
+			font-style: italic;
+			@extend .grey-text;
+			@extend .text-darken-3;
+
+			// Menu link text.
+			span{
+				border-bottom-width: 1px;
+				border-bottom-style: solid;
+				border-bottom-color: transparent;
+				transition: 0.4s all;
+			}
+
+			// Menu link state: active.
+			&.active{
+				span{
+					@extend .red-text;
+					@extend .text-accent-2;
+					border-bottom-color: map-get($red, accent-2);
+				}
+			}
+		}
+		&.init-scroll{
+			@extend .white;
+			box-shadow: none;
+		}
+		&.scrolled{
+			@extend .white;
+		}
+	}
+}
+
+main{
+	section{
+		height: 500px;
+		&#me{
+			@extend .green;
+		}
+		&#experiences{
+			@extend .blue;
+		}
+		&#works{
+			@extend .orange;
+		}
+		&#contact{
+			@extend .pink;
+		}
+	}
+}
