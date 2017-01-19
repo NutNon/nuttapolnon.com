@@ -15,6 +15,7 @@
   "dependencies": {
     "fullpage.js": "^2.9.2",
     "jquery": "^3.1.1",
-    "materialize": "^0.97.8"
+    "materialize": "^0.97.8",
+    "components-font-awesome": "^4.7.0"
   }
 }
