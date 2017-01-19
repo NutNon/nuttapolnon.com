@@ -6,13 +6,13 @@ var concat = require('gulp-concat')
 var ts = require('gulp-typescript');
 
 // SCSS dev path
-const scssDevPath = "./app/scss/**/*.scss"
+const scssDevPath = "./src/scss/**/*.scss"
 
 // HTML client dev path
-const htmlClientDevPath	=	"./app/html/**/*.html"
+const htmlClientDevPath	=	"./src/html/**/*.html"
 
 // Typescript dev path
-const tsDevPath	=	'./app/**/*.ts'
+const tsDevPath	=	'./src/**/*.ts'
 
 // Default gulp task when hit "gulp" in cli.
 gulp.task('default', ['sass', 'html-to-public', 'concat-vendor-js', 'concat-vendor-css', 'compile-ts'], function () {
@@ -38,7 +38,7 @@ gulp.task('sass', function () {
 			outputStyle: 'compressed' // Output compressed CSS.
 		})
 		.on('error', sass.logError))
-		.pipe(gulp.dest('./public/css'))
+		.pipe(gulp.dest('./build/css'))
 })
 
 // Create a task to sync browser.
@@ -53,9 +53,9 @@ gulp.task('browser-sync', function () {
 // Create a task to copy html in src to build.
 gulp.task('html-to-public', function () {
 	return gulp.src(htmlClientDevPath, {
-		base: './app/html'
+		base: './src/html'
 	})
-	.pipe(gulp.dest('./public/'))
+	.pipe(gulp.dest('./build/'))
 })
 
 // Create a task to concatenate vendor script.
@@ -65,7 +65,7 @@ gulp.task('concat-vendor-js', function() {
 		'./bower_components/materialize/dist/js/materialize.min.js'
 	])
 	.pipe(concat('vendors.js'))
-	.pipe(gulp.dest('./public/js/'))
+	.pipe(gulp.dest('./build/js/'))
 })
 
 // Create a task to concatenate vendor css.
@@ -74,7 +74,7 @@ gulp.task('concat-vendor-css', function() {
 		'./bower_components/materialize/dist/css/materialize.min.css'
 	])
 	.pipe(concat('vendors.css'))
-	.pipe(gulp.dest('./public/css/'))
+	.pipe(gulp.dest('./build/css/'))
 })
 
 // Create a task to compile typescript.
@@ -84,5 +84,5 @@ gulp.task('compile-ts', function () {
 			noImplicitAny: true,
 			out: 'script.js'
 		}))
-		.pipe(gulp.dest('public/js'));
+		.pipe(gulp.dest('build/js'));
 });
