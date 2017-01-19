@@ -1,0 +1,17 @@
+main{
+	section{
+		height: 500px;
+		&#me{
+			@extend .green;
+		}
+		&#skills{
+			@extend .blue;
+		}
+		&#works{
+			@extend .orange;
+		}
+		&#contact{
+			@extend .pink;
+		}
+	}
+}
