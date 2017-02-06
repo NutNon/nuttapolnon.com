@@ -85,7 +85,7 @@ gulp.task('concat-vendor-js', function() {
 // Create a task to concatenate vendor css.
 gulp.task('concat-vendor-css', function() {
   return gulp.src([
-		'./bower_components/materialize/dist/css/materialize.min.css'
+		'./bower_components/components-font-awesome/css/font-awesome.min.css'
 	])
 	.pipe(concat('vendors.css'))
 	.pipe(gulp.dest('./build/css/'))
