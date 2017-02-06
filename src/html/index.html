@@ -9,32 +9,104 @@
 </head>
 <body>
 	<header>
-		 <!--Top nav -->
+		<!--Top nav -->
 		<div class="navbar-fixed">
 			<nav class="init-scroll">
-				<div class="nav-wrapper">
-					<a href="#" class="brand-logo">nuttapolnon.com</a>
-					<ul id="nav-mobile" class="right hide-on-med-and-down">
-						<li>
-							<a href="#me">
-								<span>About me</span></a></li>
-						<li>
-							<a href="#skill">
-								<span>Skill</span></a></li>
-						<li>
-							<a href="#works">
-								<span>Works</span></a></li>
-						<li>
-							<a href="#contact">
-								<span>Contact</span></a></li>
-					</ul>
+				<div class="container">
+					<div class="nav-wrapper">
+						<a href="#" class="brand-logo"></a>
+						<ul id="nav-mobile" class="right hide-on-med-and-down">
+							<li>
+								<a href="#me">
+									<span>About me</span></a>
+							</li>
+							<li>
+								<a href="#skills">
+									<span>Skills</span></a>
+							</li>
+							<li>
+								<a href="#works">
+									<span>Works</span></a>
+							</li>
+							<li>
+								<a href="#contact">
+									<span>Contact</span></a>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</nav>
 		</div>
 	</header>
 
 	<main>
-		<section id="me" class="scrollspy"></section>
-		<section id="skill" class="scrollspy"></section>
+		<!--About me-->
+		<section id="me" class="scrollspy">
+			<div class="first-name">
+				<div class="container">
+					<h1>NUTTAPOL</h1></div>
+			</div>
+			<div class="last-name">
+				<div class="container">
+					<div class="row">
+						<div class="col m6"></div>
+						<!--Last name and skillsets-->
+						<div class="col m6">
+							<h1>NONSEEVEERACHAI</h1>
+							<h2>Web developer</h2>
+							<article class="skillsets">
+								<h3>Skillsets</h3>
+								<h4>Strong</h4>
+								<p>PHP, MySQL, Codeigniter, Bootstrap, jQuery, Sass</p>
+								<h4>Knowledgeable</h4>
+								<p>Vue.js, Materialize, Git</p>
+							</article>							
+						</div>
+					</div>
+				</div>
+				<div class="fill-rotated-bg"></div>
+			</div>
+		</section>
+
+		<!--Skills-->
+		<section id="skills" class="scrollspy">
+			<div class="container">
+				<div class="row">
+
+
+					<!--PHP cards-->
+					<div class="col m3 s6">
+						<div class="card">
+							<div class="card-image waves-effect waves-block waves-light">
+								<img class="activator" src="images/php-logo.svg">
+							</div>
+							<div class="card-content">
+								<span class="card-title activator grey-text text-darken-4">PHP<i class="material-icons right">more_vert</i></span>
+							</div>
+							<div class="card-reveal">
+								<span class="card-title grey-text text-darken-4">PHP<i class="material-icons right">close</i></span>
+								<p>Here is some more information about this product that is only revealed once clicked on.</p>
+							</div>
+						</div>
+					</div>
+
+					<!--Codeigniter cards-->
+					<div class="col m3 s6">PHP</div>
+					<div class="col m3 s6">Codeigniter</div>
+					<div class="col m3 s6">MySQL</div>
+					<div class="col m3 s6">HTML</div>
+					<div class="col m3 s6">CSS</div>
+					<div class="col m3 s6">SCSS</div>
+					<div class="col m3 s6">Bootstrap</div>
+					<div class="col m3 s6">Materialize</div>
+					<div class="col m3 s6">Javascript</div>
+					<div class="col m3 s6">jQuery</div>
+					<div class="col m3 s6">Vue.js</div>
+					<div class="col m3 s6">Git</div>
+				</div>
+			</div>
+		</section>
+
 		<section id="works" class="scrollspy"></section>
 		<section id="contact" class="scrollspy"></section>
 	</main>

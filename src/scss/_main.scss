@@ -1,11 +1,68 @@
 main{
+	overflow-x: hidden;
 	section{
-		height: 500px;
+		padding: 50px 0;
+		position: relative;
+
 		&#me{
-			@extend .green;
+			@extend .white;
+			color: $about-bg-color;
+			padding: 90px 0 20px 0;
+			h1,h2{
+				margin: 0;
+				font-weight: 300;
+			}
+			.rotate-block{
+				@include transform(rotate(2deg));
+			}
+			.first-name{
+				@extend .rotate-block;
+				h1{
+					margin-right: 50%;
+					@extend .right-align;
+					font-size: 4rem;
+				}
+			}
+			.last-name{
+				@extend .white-text;
+				@extend .rotate-block;
+				position: relative;
+				h1{
+					font-size: 2.5rem; 
+				}
+				h2{
+					font-size: 2rem;
+				}
+				.skillsets{
+					padding-left: 20px;
+					h3{
+						font-size: 2.5rem;
+						border-bottom: 1px solid color("white", "base");
+					}
+					h4{
+						font-size: 1.5rem;
+					}
+					p{
+						font-weight: 300;
+					}
+				}
+				.fill-rotated-bg{
+					backface-visibility: hidden;
+					border-top: 1px solid $about-bg-color;
+					background: linear-gradient(90deg, transparent 50%, $about-bg-color 50%);
+					// Being absolute to fill empty space caused by rotation.
+					position: absolute;
+					top:0;
+					bottom: -150px;
+					left: -10%;
+					right: -10%;
+					z-index: -1;
+				}
+			}
 		}
 		&#skills{
 			@extend .blue;
+			z-index: 1;
 		}
 		&#works{
 			@extend .orange;
