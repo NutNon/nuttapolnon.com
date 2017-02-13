@@ -1,8 +1,14 @@
 main{
 	overflow-x: hidden;
 	section{
-		padding: 50px 0;
+		padding: 40px 0;
 		position: relative;
+		.heading{
+			border-bottom: 1px solid $font-color;
+		}
+		article{
+			margin: 30px 0;
+		}
 
 		&#me{
 			@extend .white;
@@ -13,43 +19,56 @@ main{
 				font-weight: 300;
 			}
 			.rotate-block{
-				@include transform(rotate(2deg));
+				@include transform(rotate(0deg));
 			}
 			.first-name{
 				@extend .rotate-block;
 				h1{
-					margin-right: 50%;
-					@extend .right-align;
+					margin: 0 0 -10px 0;
 					font-size: 4rem;
 				}
 			}
-			.last-name{
-				@extend .white-text;
+			.about{
 				@extend .rotate-block;
 				position: relative;
+				
 				h1{
-					font-size: 2.5rem; 
+					font-size: 2rem; 
 				}
 				h2{
 					font-size: 2rem;
 				}
-				.skillsets{
-					padding-left: 20px;
-					h3{
-						font-size: 2.5rem;
-						border-bottom: 1px solid color("white", "base");
+				.lastname-skillsets{
+					@extend .white-text;
+					.skillsets{
+						padding-left: 20px;
+						h3{
+							font-size: 2.5rem;
+							border-bottom: 1px solid color("shades", "white");
+						}
+						h4{
+							font-size: 1.5rem;
+						}
+						p{
+							font-weight: 300;
+						}
 					}
-					h4{
-						font-size: 1.5rem;
+				}
+				.objective-contact{
+					font-size: 1.2rem;
+					font-weight: 300;
+					.objective{
 					}
-					p{
-						font-weight: 300;
+					.contact{
+						span{
+							display:block;
+						}
 					}
 				}
 				.fill-rotated-bg{
 					backface-visibility: hidden;
 					border-top: 1px solid $about-bg-color;
-					background: linear-gradient(90deg, transparent 50%, $about-bg-color 50%);
+					background: linear-gradient(90deg, $about-bg-color 50%, transparent 50%);
 					// Being absolute to fill empty space caused by rotation.
 					position: absolute;
 					top:0;
@@ -60,15 +79,18 @@ main{
 				}
 			}
 		}
-		&#skills{
-			@extend .blue;
-			z-index: 1;
+		&#experiences{
+			background-color: $exp-bg-color;
+		}
+		&#education{
+			background-color: $edu-bg-color;
+			color: white;
+			.heading{
+				border-bottom: 1px solid white;
+			}
 		}
 		&#works{
-			@extend .orange;
-		}
-		&#contact{
-			@extend .pink;
+			background-color: $works-bg-color;
 		}
 	}
 }
