@@ -1,7 +1,15 @@
 html{
 	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 18px;
 	color: $font-color;
+	@media #{$small-and-down} {
+		font-size: 18px;
+	}
+	@media #{$medium-and-up} {
+		font-size: 20px;
+	}
+	@media #{$large-and-up} {
+		font-size: 24px;
+	}
 }
 
 // Thin header.
@@ -49,6 +57,19 @@ header{
 		}
 		&.scrolled{
 			@extend .white;
+		}
+	}
+	.side-nav{
+		a{
+			font-size: 1rem;
+			// Menu link state: active.
+			&.active{
+				span{
+					@extend .red-text;
+					@extend .text-accent-2;
+					// border-bottom-color: map-get($red, accent-2);
+				}
+			}
 		}
 	}
 }

@@ -1,7 +1,7 @@
 main{
 	overflow-x: hidden;
 	section{
-		padding: 40px 0;
+		padding: 10px 0 20px 0;
 		position: relative;
 		.heading{
 			border-bottom: 1px solid $font-color;
@@ -113,7 +113,7 @@ main{
 						}
 						figcaption{
 							position: absolute;
-							bottom: 7px;
+							bottom: 10px;
 							left: 0;
 							right: 0;
 							padding: 20px;
@@ -127,6 +127,9 @@ main{
 								&:hover, &:focus{
 									text-decoration: underline;
 								}
+							}
+							.link a, .techs, .description{
+								text-shadow: 0 1px 1px color("shades", "black");
 							}
 						}
 					}
