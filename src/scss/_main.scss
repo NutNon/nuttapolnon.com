@@ -99,6 +99,39 @@ main{
 			.heading{
 				border-bottom: 1px solid white;
 			}
+			// Works showcase.
+			.swiper-container {
+				width: 100%;
+				height: auto;
+				.swiper-slide{
+					// background-color: color("orange", "darken-3");
+					figure{
+						position: relative;
+						img{
+							width: 100%;
+							height: auto;
+						}
+						figcaption{
+							position: absolute;
+							bottom: 7px;
+							left: 0;
+							right: 0;
+							padding: 20px;
+							background-color: rgba(0,0,0,0.4);
+							@media #{$medium-and-down} {
+								position: static;
+							}
+							a{
+								font-size: 1.5rem;
+								color: color("shades", "white");
+								&:hover, &:focus{
+									text-decoration: underline;
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
