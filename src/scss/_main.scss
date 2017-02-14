@@ -44,7 +44,7 @@ main{
 						padding-left: 20px;
 						h3{
 							font-size: 2.5rem;
-							border-bottom: 1px solid color("shades", "white");
+							//border-bottom: 1px solid color("shades", "white");
 						}
 						h4{
 							font-size: 1.5rem;
@@ -81,6 +81,10 @@ main{
 		}
 		&#experiences{
 			background-color: $exp-bg-color;
+			color: white;
+			.heading{
+				border-bottom: 1px solid white;
+			}
 		}
 		&#education{
 			background-color: $edu-bg-color;
@@ -91,6 +95,10 @@ main{
 		}
 		&#works{
 			background-color: $works-bg-color;
+			color: white;
+			.heading{
+				border-bottom: 1px solid white;
+			}
 		}
 	}
 }
