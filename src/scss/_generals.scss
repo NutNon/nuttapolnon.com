@@ -24,7 +24,23 @@ header{
 	nav{
 		// Logo.
 		.brand-logo{
-			padding: 0 20px;
+			img{
+				width: 40px;
+			}
+			@media #{$medium-and-down} {
+				left: 0;
+				transform: none;
+				img{
+					width: 35px;
+				}
+			}
+			@media #{$small-and-down} {
+				left: 50%;
+				transform: translateX(-50%);
+				img{
+					width: 30px;
+				}
+			}
 		}
 
 		// Menu link.
