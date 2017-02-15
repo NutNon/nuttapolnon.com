@@ -17,6 +17,8 @@
     "jquery": "^3.1.1",
     "materialize": "^0.97.8",
     "components-font-awesome": "^4.7.0",
-    "swiper": "^3.4.1"
+    "swiper": "^3.4.1",
+    "wow": "wowjs#^1.1.2",
+    "animate.css": "^3.5.2"
   }
 }

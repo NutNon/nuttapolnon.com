@@ -75,9 +75,14 @@ gulp.task('resources-to-public', function () {
 // Create a task to concatenate vendor script.
 gulp.task('concat-vendor-js', function() {
   return gulp.src([
+		// jQuery
 		'./bower_components/jquery/dist/jquery.min.js', 
+		// materializecss
 		'./bower_components/materialize/dist/js/materialize.min.js',
+		// Swiper
 		'./bower_components/swiper/dist/js/swiper.min.js',
+		// WOW
+		'./bower_components/wow/dist/wow.min.js',
 	])
 	.pipe(concat('vendors.js'))
 	.pipe(gulp.dest('./build/js/'))
@@ -86,8 +91,12 @@ gulp.task('concat-vendor-js', function() {
 // Create a task to concatenate vendor css.
 gulp.task('concat-vendor-css', function() {
   return gulp.src([
+		// font awesome
 		'./bower_components/components-font-awesome/css/font-awesome.min.css',
+		// Swiper
 		'./bower_components/swiper/dist/css/swiper.min.css',
+		// Animate.css
+		'./bower_components/animate.css/animate.min.css',
 	])
 	.pipe(concat('vendors.css'))
 	.pipe(gulp.dest('./build/css/'))
