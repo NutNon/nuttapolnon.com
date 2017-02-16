@@ -27,6 +27,7 @@ header{
 			img{
 				width: 40px;
 			}
+			// Responsive logo. replace default centered logo breakpoint.
 			@media #{$medium-and-down} {
 				left: 0;
 				transform: none;
@@ -34,6 +35,7 @@ header{
 					width: 35px;
 				}
 			}
+			// Responsive logo.
 			@media #{$small-and-down} {
 				left: 50%;
 				transform: translateX(-50%);

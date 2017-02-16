@@ -18,4 +18,7 @@ $(function () {
 		speed: 600,
 		// effect: 'fade' ** caused previou slide to stay behind.
 	})        
+
+	// Init WOW (Reveal CSS animation as you scroll down a page.)
+	new WOW().init()
 })
