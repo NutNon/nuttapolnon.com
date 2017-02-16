@@ -1,10 +1,11 @@
 main{
-	overflow-x: hidden;
+	overflow: hidden;
 	section{
 		padding: 10px 0 20px 0;
 		position: relative;
+		color: white;
 		.heading{
-			border-bottom: 1px solid $font-color;
+			border-bottom: 1px solid white;
 		}
 		article{
 			margin: 30px 0;
@@ -79,26 +80,27 @@ main{
 				}
 			}
 		}
+
+		&#about{
+			padding-top: 90px;
+			background-color: $about-bg-color;
+			article.skillsets, article.contact{
+				.article-indent{
+					padding: 0 20px;
+				}
+				p{
+					margin-top: 0;
+				}
+			}
+		}
 		&#experiences{
 			background-color: $exp-bg-color;
-			color: white;
-			.heading{
-				border-bottom: 1px solid white;
-			}
 		}
 		&#education{
 			background-color: $edu-bg-color;
-			color: white;
-			.heading{
-				border-bottom: 1px solid white;
-			}
 		}
 		&#works{
 			background-color: $works-bg-color;
-			color: white;
-			.heading{
-				border-bottom: 1px solid white;
-			}
 			// Works showcase.
 			.swiper-container {
 				width: 100%;
