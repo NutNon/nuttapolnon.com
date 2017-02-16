@@ -11,21 +11,27 @@ const scssDevPath = "./src/scss/**/*.scss"
 // HTML client dev path
 const htmlClientDevPath	=	"./src/html/**/*.html"
 
+// Resources client dev path
+const resourcesDevPath = "./src/resources/**/*.*"
+
 // Typescript dev path
 const tsDevPath	=	'./src/**/*.ts'
 
 // Default gulp task when hit "gulp" in cli.
-gulp.task('default', ['sass', 'html-to-public', 'concat-vendor-js', 'concat-vendor-css', 'compile-ts'], function () {
+gulp.task('default', ['sass', 'html-to-public', 'resources-to-public', 'concat-vendor-js', 'concat-vendor-css', 'compile-ts'], function () {
 
 	// // เมื่อไฟล์ html หรือ css มีการเปลี่ยนแปลง ก็ให้รีเฟรช web browser
 	// gulp.watch(['**/*.html'], browserSync.reload)
 	// gulp.watch(['**/*.css'], browserSync.reload)
 
-	// เมื่อไฟล์ scss มีการเปลี่ยนแปลง ก็ให้ทำ task "sass" 
+	// Run task "sass" when SCSS files changed. 
 	gulp.watch(scssDevPath, ['sass'])
 
 	// Run task "html-to-public" when HTML files changed.
 	gulp.watch(htmlClientDevPath, ['html-to-public'])
+
+	// Run task "resources-to-public" when files changed.
+	gulp.watch(resourcesDevPath, ['resources-to-public'])
 
 	// Run task "compile-ts" when TS files changed.
 	gulp.watch(tsDevPath, ['compile-ts'])
@@ -58,11 +64,25 @@ gulp.task('html-to-public', function () {
 	.pipe(gulp.dest('./build/'))
 })
 
+// Create a task to copy resources in src to build.
+gulp.task('resources-to-public', function () {
+	return gulp.src(resourcesDevPath, {
+		base: './src/resources'
+	})
+	.pipe(gulp.dest('./build/'))
+})
+
 // Create a task to concatenate vendor script.
 gulp.task('concat-vendor-js', function() {
   return gulp.src([
+		// jQuery
 		'./bower_components/jquery/dist/jquery.min.js', 
-		'./bower_components/materialize/dist/js/materialize.min.js'
+		// materializecss
+		'./bower_components/materialize/dist/js/materialize.min.js',
+		// Swiper
+		'./bower_components/swiper/dist/js/swiper.min.js',
+		// WOW
+		'./bower_components/wow/dist/wow.min.js',
 	])
 	.pipe(concat('vendors.js'))
 	.pipe(gulp.dest('./build/js/'))
@@ -71,7 +91,12 @@ gulp.task('concat-vendor-js', function() {
 // Create a task to concatenate vendor css.
 gulp.task('concat-vendor-css', function() {
   return gulp.src([
-		'./bower_components/materialize/dist/css/materialize.min.css'
+		// font awesome
+		'./bower_components/components-font-awesome/css/font-awesome.min.css',
+		// Swiper
+		'./bower_components/swiper/dist/css/swiper.min.css',
+		// Animate.css
+		'./bower_components/animate.css/animate.min.css',
 	])
 	.pipe(concat('vendors.css'))
 	.pipe(gulp.dest('./build/css/'))
@@ -84,5 +109,5 @@ gulp.task('compile-ts', function () {
 			noImplicitAny: true,
 			out: 'script.js'
 		}))
-		.pipe(gulp.dest('build/js'));
+		.pipe(gulp.dest('./build/js'));
 });

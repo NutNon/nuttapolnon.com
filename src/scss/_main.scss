@@ -1,0 +1,142 @@
+main{
+	overflow: hidden;
+	section{
+		padding: 10px 0 20px 0;
+		position: relative;
+		color: white;
+		.heading{
+			border-bottom: 1px solid white;
+		}
+		article{
+			margin: 30px 0;
+		}
+
+		&#me{
+			@extend .white;
+			color: $about-bg-color;
+			padding: 90px 0 20px 0;
+			h1,h2{
+				margin: 0;
+				font-weight: 300;
+			}
+			.rotate-block{
+				@include transform(rotate(0deg));
+			}
+			.first-name{
+				@extend .rotate-block;
+				h1{
+					margin: 0 0 -10px 0;
+					font-size: 4rem;
+				}
+			}
+			.about{
+				@extend .rotate-block;
+				position: relative;
+				
+				h1{
+					font-size: 2rem; 
+				}
+				h2{
+					font-size: 2rem;
+				}
+				.lastname-skillsets{
+					@extend .white-text;
+					.skillsets{
+						padding-left: 20px;
+						h3{
+							font-size: 2.5rem;
+							//border-bottom: 1px solid color("shades", "white");
+						}
+						h4{
+							font-size: 1.5rem;
+						}
+						p{
+							font-weight: 300;
+						}
+					}
+				}
+				.objective-contact{
+					font-size: 1.2rem;
+					font-weight: 300;
+					.objective{
+					}
+					.contact{
+						span{
+							display:block;
+						}
+					}
+				}
+				.fill-rotated-bg{
+					backface-visibility: hidden;
+					border-top: 1px solid $about-bg-color;
+					background: linear-gradient(90deg, $about-bg-color 50%, transparent 50%);
+					// Being absolute to fill empty space caused by rotation.
+					position: absolute;
+					top:0;
+					bottom: -150px;
+					left: -10%;
+					right: -10%;
+					z-index: -1;
+				}
+			}
+		}
+
+		&#about{
+			padding-top: 90px;
+			background-color: $about-bg-color;
+			article.skillsets, article.contact{
+				.article-indent{
+					padding: 0 20px;
+				}
+				p{
+					margin-top: 0;
+				}
+			}
+		}
+		&#experiences{
+			background-color: $exp-bg-color;
+		}
+		&#education{
+			background-color: $edu-bg-color;
+		}
+		&#works{
+			background-color: $works-bg-color;
+			// Works showcase.
+			.swiper-container {
+				width: 100%;
+				height: auto;
+				.swiper-slide{
+					// background-color: color("orange", "darken-3");
+					figure{
+						position: relative;
+						img{
+							width: 100%;
+							height: auto;
+						}
+						figcaption{
+							position: absolute;
+							bottom: 10px;
+							left: 0;
+							right: 0;
+							padding: 20px;
+							background-color: rgba(0,0,0,0.4);
+							@media #{$medium-and-down} {
+								position: static;
+							}
+							a{
+								font-size: 1.5rem;
+								color: color("shades", "white");
+								&:hover, &:focus{
+									text-decoration: underline;
+								}
+							}
+							.link a, .techs, .description{
+								text-shadow: 0 1px 1px color("shades", "black");
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

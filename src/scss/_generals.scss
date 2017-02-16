@@ -1,0 +1,97 @@
+html{
+	font-family: 'Source Sans Pro', sans-serif;
+	color: $font-color;
+	@media #{$small-and-down} {
+		font-size: 18px;
+	}
+	@media #{$medium-and-up} {
+		font-size: 20px;
+	}
+	@media #{$large-and-up} {
+		font-size: 24px;
+	}
+}
+
+// Thin header.
+h1,h2,h3,h4,h5,h6{
+	font-weight: 300;
+}
+
+header{
+	.navbar-fixed{
+		height: 0;
+	}
+	nav{
+		// Logo.
+		.brand-logo{
+			img{
+				width: 40px;
+			}
+			// Responsive logo. replace default centered logo breakpoint.
+			@media #{$medium-and-down} {
+				left: 0;
+				transform: none;
+				img{
+					width: 35px;
+				}
+			}
+			// Responsive logo.
+			@media #{$small-and-down} {
+				left: 50%;
+				transform: translateX(-50%);
+				img{
+					width: 30px;
+				}
+			}
+		}
+
+		// Menu link.
+		a{
+			font-weight: 600;
+			font-style: italic;
+			@extend .grey-text;
+			@extend .text-darken-3;
+
+			// Menu link text.
+			span{
+				border-bottom-width: 1px;
+				border-bottom-style: solid;
+				border-bottom-color: transparent;
+				transition: 0.4s all;
+			}
+
+			// Menu link state: active.
+			&.active{
+				span{
+					@extend .red-text;
+					@extend .text-accent-2;
+					// border-bottom-color: map-get($red, accent-2);
+				}
+			}
+		}
+		&.init-scroll{
+			@extend .white;
+			box-shadow: none;
+		}
+		&.scrolled{
+			@extend .white;
+		}
+	}
+	.side-nav{
+		a{
+			font-size: 1rem;
+			// Menu link state: active.
+			&.active{
+				span{
+					@extend .red-text;
+					@extend .text-accent-2;
+					// border-bottom-color: map-get($red, accent-2);
+				}
+			}
+		}
+	}
+}
+
+.material-icons{
+	vertical-align: middle;
+}
